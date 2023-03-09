@@ -19,6 +19,8 @@ myTicket.addEventListener("submit", function(event)
     kmTrip = document.getElementById("kmTrip").value;
     age = document.getElementById("userAge").value;
     let price = (kmTrip * travelFee).toFixed(2);
+    let finalPrice;
+    let discount;
 
     // ciclo per controllare se i valori inseriti sono corretti
     if( (isNaN(age)) || (parseInt(age) < 0) || (parseInt(age) > 110) || (isNaN(kmTrip)) || (parseInt(kmTrip) <= 0))
@@ -31,16 +33,30 @@ myTicket.addEventListener("submit", function(event)
     {
     if(parseInt(age) < 18)
     {
-        price = price - (price / 100 * youngDiscount);
+        discount = price / 100 * youngDiscount;
+        finalPrice = price - discount;
+        document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 20%!</h4>`;
+        document.getElementById("discount").innerHTML = ` -${discount}euro`;
     }
     if(parseInt(age) > 65) 
     {
-        price = price - (price / 100 * oldDiscount);
+        discount = price / 100 * oldDiscount;
+        finalPrice = price - discount;
+        document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 40%! </h4> `;
     }
-
-        console.log(kmTrip + "km"); 
-        console.log(age);
-        console.log(price + " euro");     
-        
+    if((parseInt(age) >= 18)&&(parseInt(age) <= 65))
+    {
+        document.getElementById("discount-alert").innerHTML = `<h4 class="text-danger"> Nessuno sconto applicabile </h4> `;
+        document.getElementById("ticketCost").innerHTML = ` ${price} euro`;  
+    }
+    else
+    {
+        document.getElementById("ticketCost").innerHTML = `${finalPrice} euro`;
+        document.getElementById("originalPrice").innerHTML = `Costo iniziale del biglietto: ${price} euro`; 
+        document.getElementById("discount").innerHTML = `Sconto applicato: ${discount} euro`;  
+    }
+        document.getElementById("myKm").innerHTML = ` ${kmTrip}km`;
+        document.getElementById("myAge").innerHTML = ` ${age}`;
+         
     }
 });
