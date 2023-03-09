@@ -9,21 +9,27 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body class="bg-primary">
-    <main>
+    <main class="container py-5">
+        <div class="d-flex text-white align-items-center gap-3">
+            <i class="fa-solid fa-train-subway display-3"></i>
+            <h1> TreniEuropa </h1>
+        </div>
         <div class="container my-5 p-5 bg-light">
             <form class="text-center " id="myTicket" action="#">
                 <label for="kmTrip">Inserisci i chilometri: </label>
                 <input type="text" name="ktTrip" id="kmTrip">
                 <label for="userAge">Inserisci la tua età: </label>
                 <input type="text" name="userAge" id="userAge">
-                <br>
-                <input type="submit" value="Invia">
-                <input type="reset" value="Cancella">
+                <div class="py-4">
+                    <input type="submit" value="Invia">
+                     <input type="reset" value="Cancella">
+                </div>
+                
             </form>
 
             <div class="container py-5">
-                <h1> Dettagli del passeggero </h1>
-                <div>
+                <h1 class="font-primary"> Dettagli del passeggero </h1>
+                <div class="py-5">
                     <div class="d-flex">
                         <h3>
                             Chilometri viaggiati:  
