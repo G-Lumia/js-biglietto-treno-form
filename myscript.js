@@ -12,8 +12,7 @@ const travelFee = 0.21;
 const youngDiscount = 20;
 const oldDiscount = 40;
 
-const myTicket = document.getElementById("myTicket");
-myTicket.addEventListener("submit", function(event) 
+document.getElementById("myTicket").addEventListener("submit", function(event) 
 {
     event.preventDefault();
     kmTrip = document.getElementById("kmTrip").value;
@@ -23,7 +22,7 @@ myTicket.addEventListener("submit", function(event)
     let discount;
 
     // ciclo per controllare se i valori inseriti sono corretti
-    if( (isNaN(age)) || (parseInt(age) < 0) || (parseInt(age) > 110) || (isNaN(kmTrip)) || (parseInt(kmTrip) <= 0))
+    if( (isNaN(age)) || (parseInt(age) <= 0) || (parseInt(age) > 110) || (isNaN(kmTrip)) || (parseInt(kmTrip) <= 0))
     {
         console.log("I dati inseriti non sono corretti: riprova.") ;
     }
@@ -33,7 +32,7 @@ myTicket.addEventListener("submit", function(event)
     {
     if(parseInt(age) < 18)
     {
-        discount = price / 100 * youngDiscount;
+        discount = (price / 100 * youngDiscount).toFixed(2);
         finalPrice = price - discount;
         document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 20%!</h4>`;
         document.getElementById("discount").innerHTML = ` -${discount}euro`;
@@ -57,6 +56,6 @@ myTicket.addEventListener("submit", function(event)
     }
         document.getElementById("myKm").innerHTML = ` ${kmTrip}km`;
         document.getElementById("myAge").innerHTML = ` ${age}`;
-         
+        document.getElementById("ticket").classList.remove("d-none");
     }
 });
