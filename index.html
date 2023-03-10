@@ -15,28 +15,28 @@
             <h1> TreniEuropa </h1>
         </div>
         <div class="container my-5">
-            <div class="bg-light py-3">
+            <div class="bg-light rounded py-3">
                 <form class="text-center row" id="myTicket" action="#">
-                    <div class="col-12 py-2">
+                    <div class="py-2">
                         <label for="kmTrip">Inserisci i chilometri: </label>
                         <input type="text" name="ktTrip" id="kmTrip">
                     </div>
-                    <div class="col-12 py-2">
+                    <div class="py-2">
                         <label for="userAge">Inserisci la tua età: </label>
                         <input type="text" name="userAge" id="userAge">
                     </div>
                     
-                    <div class="col-12 py-4">
+                    <div class="py-4">
                         <input type="submit" value="Invia">
                          <input type="reset" value="Cancella">
                     </div>
                 </form>
             </div>
-            <div id="ticket" class="container my-5 py-5 bg-light d-none">
+            <div id="ticket" class="container my-5 py-5 bg-light d-none rounded text-center">
                 <h1 class="font-primary"> Dettagli del passeggero </h1>
                 <div class="py-5">
                     <div classs="my-3">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <h3>
                                 Chilometri viaggiati:  
                             </h3>
@@ -44,7 +44,7 @@
                                 
                             </h3>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <h3>
                                 Età: 
                             </h3>
@@ -53,12 +53,9 @@
                             </h3>
                         </div>
                     </div>
+                    <h4 id="discount-alert">
 
-                    <div class="d-flex">
-                        <h4 id="discount-alert">
-
-                        </h4>
-                    </div>
+                    </h4>
                     <h4 id="originalPrice">
 
                     </h4>
@@ -66,7 +63,7 @@
 
                     </h4>
 
-                    <div class="d-flex">
+                    <div class="d-flex justify-content-center">
                         <h4>
                             Prezzo totale: 
                         </h4>
@@ -75,6 +72,11 @@
                         </h4>
                     </div>
                 </div>
+            </div>
+            <div id="error" class="container bg-light rounded my-5 d-none">
+                <h1 class="text-danger">
+                    I dati inseriti non sono corretti, riprovare
+                </h1>
             </div>
         </div>
     </main>

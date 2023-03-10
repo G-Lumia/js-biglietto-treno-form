@@ -24,38 +24,41 @@ document.getElementById("myTicket").addEventListener("submit", function(event)
     // ciclo per controllare se i valori inseriti sono corretti
     if( (isNaN(age)) || (parseInt(age) <= 0) || (parseInt(age) > 110) || (isNaN(kmTrip)) || (parseInt(kmTrip) <= 0))
     {
-        console.log("I dati inseriti non sono corretti: riprova.") ;
+        document.getElementById("error").classList.remove("d-none");
     }
 
     // cicli per verificare se l'utente potrà avere o meno uno sconto in base alla propria età
     else
     {
-    if(parseInt(age) < 18)
-    {
-        discount = (price / 100 * youngDiscount).toFixed(2);
-        finalPrice = price - discount;
-        document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 20%!</h4>`;
-        document.getElementById("discount").innerHTML = ` -${discount}euro`;
-    }
-    if(parseInt(age) > 65) 
-    {
-        discount = price / 100 * oldDiscount;
-        finalPrice = price - discount;
-        document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 40%! </h4> `;
-    }
-    if((parseInt(age) >= 18)&&(parseInt(age) <= 65))
-    {
-        document.getElementById("discount-alert").innerHTML = `<h4 class="text-danger"> Nessuno sconto applicabile </h4> `;
-        document.getElementById("ticketCost").innerHTML = ` ${price} euro`;  
-    }
-    else
-    {
-        document.getElementById("ticketCost").innerHTML = `${finalPrice} euro`;
-        document.getElementById("originalPrice").innerHTML = `Costo iniziale del biglietto: ${price} euro`; 
-        document.getElementById("discount").innerHTML = `Sconto applicato: ${discount} euro`;  
-    }
-        document.getElementById("myKm").innerHTML = ` ${kmTrip}km`;
-        document.getElementById("myAge").innerHTML = ` ${age}`;
-        document.getElementById("ticket").classList.remove("d-none");
+        if(parseInt(age) < 18)
+        {
+            discount = (price / 100 * youngDiscount).toFixed(2);
+            finalPrice = price - discount;
+            document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 20%!</h4>`;
+            document.getElementById("discount").innerHTML = ` -${discount}euro`;
+        }
+        if(parseInt(age) > 65) 
+        {
+            discount = price / 100 * oldDiscount;
+            finalPrice = price - discount;
+            document.getElementById("discount-alert").innerHTML = `<h4 class="text-success"> Hai diritto ad uno sconto del 40%! </h4> `;
+        }
+        if((parseInt(age) >= 18)&&(parseInt(age) <= 65))
+        {
+            document.getElementById("discount-alert").innerHTML = `<h4 class="text-danger"> Nessuno sconto applicabile </h4> `;
+            document.getElementById("ticketCost").innerHTML = ` ${price} euro`;  
+        }
+
+        // stampa dei dettagli del biglietto e dello sconto applicato
+        else
+        {
+            document.getElementById("ticketCost").innerHTML = `${finalPrice} euro`;
+            document.getElementById("originalPrice").innerHTML = `Costo iniziale del biglietto: ${price} euro`; 
+            document.getElementById("discount").innerHTML = `Sconto applicato: ${discount} euro`;
+              
+        }
+            document.getElementById("myKm").innerHTML = ` ${kmTrip}km`;
+            document.getElementById("myAge").innerHTML = ` ${age}`;
+            document.getElementById("ticket").classList.remove("d-none");  
     }
 });
